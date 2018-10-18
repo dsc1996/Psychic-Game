@@ -3,7 +3,7 @@ var losses = 0;
 var guessesLeft = 9;
 var keyChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var userChoice = "";
-var yourGuesses = "";
+var yourGuesses = [];
 
 
 document.onkeyup = function game () {
@@ -24,7 +24,7 @@ document.onkeyup = function game () {
     if(userChoice !== keyChoices || userGuess !== letter) {
         for (var i = 0; i < 11; i++) {
             var guessesLeft = i - losses;
-            document.getElementById("yourGuesses").innerHTML = "<p>Your guesses so far: " + userChoice + "</p>" 
+            
         }
     }
     if (guessesLeft < 0){
@@ -32,11 +32,14 @@ document.onkeyup = function game () {
         guessesLeft = 9;
         wins = 0;
         losses = 0;
-        userChoice = " ";
+        userChoice = [" "];
     }
 
 
 document.getElementById("wins").innerHTML = "<p>Wins: " + wins + "</p>" 
 document.getElementById("losses").innerHTML = "<p>Losses: " + losses + "</p>" 
 document.getElementById("guessesLeft").innerHTML = "<p>Guesses Left: " + guessesLeft + "</p>" 
+document.getElementById("yourGuesses").innerHTML = "<p>Your guesses so far: " + userChoice + "</p>" 
 
+
+}
