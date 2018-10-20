@@ -18,10 +18,11 @@ document.onkeyup = function game () {
  
      if (userChoice == keyChoices || userChoice == letter) {
          wins++;
-         userChoice.push(yourGuesses);
     } else {
      guess++;
+     yourGuesses.push(userChoice);
     }
+
     if(userChoice !== keyChoices || userGuess !== letter) {
         for (var i = 0; i < 11; i++) {
             var guessesLeft = i - guess;
@@ -36,11 +37,13 @@ document.onkeyup = function game () {
         yourGuesses = [];
     }
 
+    var html = 
+			"<h1> The Psychic Game </h1>" +
+			"<p>Guess what letter I'm thinking of!</p>" +
+			"<p>Wins: " + wins + "</p>" +
+			"<p>Losses: " + losses + "</p>" +
+			"<p>Guesses Left: " + guessesLeft + "</p>" +
+			"<p>Your Guesses so far: " + yourGuesses.join(", ") + "</p>";
 
-document.getElementById("wins").innerHTML = "<p>Wins: " + wins + "</p>" 
-document.getElementById("losses").innerHTML = "<p>Losses: " + losses + "</p>" 
-document.getElementById("guessesLeft").innerHTML = "<p>Guesses Left: " + guessesLeft + "</p>" 
-document.getElementById("yourGuesses").innerHTML = "<p>Your guesses so far: " + userChoice + "</p>" 
-
-
+			document.querySelector("#game").innerHTML = html;
 }
